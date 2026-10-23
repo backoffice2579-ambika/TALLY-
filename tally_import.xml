@@ -1,0 +1,995 @@
+<ENVELOPE>
+  <HEADER>
+    <TALLYREQUEST>Import Data</TALLYREQUEST>
+  </HEADER>
+  <BODY>
+    <IMPORTDATA>
+      <REQUESTDESC>
+        <REPORTNAME>Vouchers</REPORTNAME>
+        <STATICVARIABLES>
+          <SVCURRENTCOMPANY>##SVCURRENTCOMPANY</SVCURRENTCOMPANY>
+        </STATICVARIABLES>
+      </REQUESTDESC>
+      <REQUESTDATA>
+        <!-- 1. Master: API BALANCE Ledger -->
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="API BALANCE" ACTION="Create">
+            <NAME>API BALANCE</NAME>
+            <PARENT>Bank Accounts</PARENT>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="9503328952" ACTION="Create">
+            <NAME>9503328952</NAME>
+            <PARENT>Sundry Debtors</PARENT>
+            <MAILINGNAME.LIST>
+              <MAILINGNAME>Sahara Communication Candrapur</MAILINGNAME>
+            </MAILINGNAME.LIST>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="9960768648" ACTION="Create">
+            <NAME>9960768648</NAME>
+            <PARENT>Sundry Debtors</PARENT>
+            <MAILINGNAME.LIST>
+              <MAILINGNAME>Kaustubh Janral Store</MAILINGNAME>
+            </MAILINGNAME.LIST>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="8275553811" ACTION="Create">
+            <NAME>8275553811</NAME>
+            <PARENT>Sundry Debtors</PARENT>
+            <MAILINGNAME.LIST>
+              <MAILINGNAME>Digital Communication</MAILINGNAME>
+            </MAILINGNAME.LIST>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="9822407728" ACTION="Create">
+            <NAME>9822407728</NAME>
+            <PARENT>Sundry Debtors</PARENT>
+            <MAILINGNAME.LIST>
+              <MAILINGNAME>Nitin Traders</MAILINGNAME>
+            </MAILINGNAME.LIST>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="7814000044" ACTION="Create">
+            <NAME>7814000044</NAME>
+            <PARENT>Sundry Debtors</PARENT>
+            <MAILINGNAME.LIST>
+              <MAILINGNAME>Goodwill Communication</MAILINGNAME>
+            </MAILINGNAME.LIST>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="9678065631" ACTION="Create">
+            <NAME>9678065631</NAME>
+            <PARENT>Sundry Debtors</PARENT>
+            <MAILINGNAME.LIST>
+              <MAILINGNAME>Borboruah Communication  Nazira</MAILINGNAME>
+            </MAILINGNAME.LIST>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="9511000095" ACTION="Create">
+            <NAME>9511000095</NAME>
+            <PARENT>Sundry Debtors</PARENT>
+            <MAILINGNAME.LIST>
+              <MAILINGNAME>New Avishkar</MAILINGNAME>
+            </MAILINGNAME.LIST>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="7020158538" ACTION="Create">
+            <NAME>7020158538</NAME>
+            <PARENT>Sundry Debtors</PARENT>
+            <MAILINGNAME.LIST>
+              <MAILINGNAME>Shrikant Cd Home</MAILINGNAME>
+            </MAILINGNAME.LIST>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="7721932632" ACTION="Create">
+            <NAME>7721932632</NAME>
+            <PARENT>Sundry Debtors</PARENT>
+            <MAILINGNAME.LIST>
+              <MAILINGNAME>Nilesh Mobile Shop</MAILINGNAME>
+            </MAILINGNAME.LIST>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="7276633480" ACTION="Create">
+            <NAME>7276633480</NAME>
+            <PARENT>Sundry Debtors</PARENT>
+            <MAILINGNAME.LIST>
+              <MAILINGNAME>Gaurav Agency Pohradevi</MAILINGNAME>
+            </MAILINGNAME.LIST>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="9423377097" ACTION="Create">
+            <NAME>9423377097</NAME>
+            <PARENT>Sundry Debtors</PARENT>
+            <MAILINGNAME.LIST>
+              <MAILINGNAME>Dhanisha Services</MAILINGNAME>
+            </MAILINGNAME.LIST>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="9834255537" ACTION="Create">
+            <NAME>9834255537</NAME>
+            <PARENT>Sundry Debtors</PARENT>
+            <MAILINGNAME.LIST>
+              <MAILINGNAME>Govind Pandharinath Bhalerao</MAILINGNAME>
+            </MAILINGNAME.LIST>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="9921882182" ACTION="Create">
+            <NAME>9921882182</NAME>
+            <PARENT>Sundry Debtors</PARENT>
+            <MAILINGNAME.LIST>
+              <MAILINGNAME>Raza Medical</MAILINGNAME>
+            </MAILINGNAME.LIST>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="9423232929" ACTION="Create">
+            <NAME>9423232929</NAME>
+            <PARENT>Sundry Debtors</PARENT>
+            <MAILINGNAME.LIST>
+              <MAILINGNAME>Jain Enterprises</MAILINGNAME>
+            </MAILINGNAME.LIST>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="9011747520" ACTION="Create">
+            <NAME>9011747520</NAME>
+            <PARENT>Sundry Debtors</PARENT>
+            <MAILINGNAME.LIST>
+              <MAILINGNAME>Shree Mobile</MAILINGNAME>
+            </MAILINGNAME.LIST>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="7620180459" ACTION="Create">
+            <NAME>7620180459</NAME>
+            <PARENT>Sundry Debtors</PARENT>
+            <MAILINGNAME.LIST>
+              <MAILINGNAME>Mobile House</MAILINGNAME>
+            </MAILINGNAME.LIST>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="9844402897" ACTION="Create">
+            <NAME>9844402897</NAME>
+            <PARENT>Sundry Debtors</PARENT>
+            <MAILINGNAME.LIST>
+              <MAILINGNAME>Anand Agencies Gadag</MAILINGNAME>
+            </MAILINGNAME.LIST>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="9986877712" ACTION="Create">
+            <NAME>9986877712</NAME>
+            <PARENT>Sundry Debtors</PARENT>
+            <MAILINGNAME.LIST>
+              <MAILINGNAME>Mahalingappa Ele</MAILINGNAME>
+            </MAILINGNAME.LIST>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="7083362568" ACTION="Create">
+            <NAME>7083362568</NAME>
+            <PARENT>Sundry Debtors</PARENT>
+            <MAILINGNAME.LIST>
+              <MAILINGNAME>Smart Fix Hub</MAILINGNAME>
+            </MAILINGNAME.LIST>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="9511238915" ACTION="Create">
+            <NAME>9511238915</NAME>
+            <PARENT>Sundry Debtors</PARENT>
+            <MAILINGNAME.LIST>
+              <MAILINGNAME>Nik`s Corner Porvorim</MAILINGNAME>
+            </MAILINGNAME.LIST>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="9970944696" ACTION="Create">
+            <NAME>9970944696</NAME>
+            <PARENT>Sundry Debtors</PARENT>
+            <MAILINGNAME.LIST>
+              <MAILINGNAME>Dattkrupa Mobile Shop</MAILINGNAME>
+            </MAILINGNAME.LIST>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <LEDGER NAME="8830387673" ACTION="Create">
+            <NAME>8830387673</NAME>
+            <PARENT>Sundry Debtors</PARENT>
+            <MAILINGNAME.LIST>
+              <MAILINGNAME>Mahalaxmi Electronics</MAILINGNAME>
+            </MAILINGNAME.LIST>
+            <OPENINGBALANCE>0</OPENINGBALANCE>
+          </LEDGER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>9503328952</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Sahara Communication Candrapur[9503328952] | Ref: offer | Bank: sonal</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-21000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>9503328952</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>21000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>9960768648</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Kaustubh Janral Store[9960768648] | Ref: 629520387604 | Bank: SONAL ICIC 22102026</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-1000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>9960768648</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>1000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>8275553811</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Digital Communication[8275553811] | Ref: 786786114707 | Bank: sonal icic 22102026</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-50000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>8275553811</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>50000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>9822407728</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Nitin Traders[9822407728] | Ref: UPI/666227542494/transfer/XXrs11@okaxis/BANK OF MA | Bank: sonal icic</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-100000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>9822407728</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>100000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>7814000044</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Goodwill Communication[7814000044] | Ref: UPI/Rashpal Si/XX82-3@okaxis/UPI/AU SMALL F/666290 | Bank: sonal icic</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-19000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>7814000044</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>19000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>9678065631</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Borboruah Communication  Nazir[9678065631] | Ref: MMT/IMPS/629609091996/Fund Transfer/Nekibur Bo/Ind | Bank: sonal icic</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-6000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>9678065631</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>6000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>9511000095</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To New Avishkar[9511000095] | Ref: INF/INFT/046384909531/ambica         /AVISHKAR MOB</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-20000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>9511000095</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>20000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>7020158538</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Shrikant Cd Home[7020158538] | Ref: UPI/101738827585/AMS BALANCE PAY/XX1749@upi/StateB | Bank: sonal icic</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-5000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>7020158538</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>5000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>7721932632</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Nilesh Mobile Shop[7721932632] | Ref: UPI/088201806955/Payment from Ph/XX5106@ybl/CENTRA | Bank: sonal icic</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-1500.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>7721932632</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>1500.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>7276633480</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Gaurav Agency Pohradevi[7276633480] | Ref: UPI/398143061320/10:02:15/UPI/7038277516-2@ybl/Pa | Bank: sonal bob</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-2800.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>7276633480</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>2800.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>9423377097</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Dhanisha Services[9423377097] | Ref: UPI/666271352247/UPI/XXf763@okaxis/HDFC BANK LTD/A | Bank: sonal icic</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-750.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>9423377097</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>750.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>9834255537</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Govind Pandharinath Bhalerao[9834255537] | Ref: UPI/Govind Pan/XX37-3@axl/Payment fr/State Bank/60 | Bank: sonal icic</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-5000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>9834255537</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>5000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>9921882182</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Raza Medical [9921882182] | Ref: UPI/600562501740/Payment from Ph/XX4411@axl/HDFC B | Bank: sonal icic</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-2000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>9921882182</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>2000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>9423232929</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Jain Enterprises[9423232929] | Ref: UPI/901664960737/Payment from Ph/XX3944@ybl/BANK O | Bank: sonal icic</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-2000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>9423232929</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>2000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>9423232929</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Jain Enterprises[9423232929] | Ref: UPI/666246376678/Ambika/XX66-2@okicici/Pune DCC Ba | Bank: sonal icic</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-5000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>9423232929</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>5000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>9011747520</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Shree Mobile[9011747520] | Ref: UPI/344436903086/Payment from Ph/XX7520@ibl/StateB | Bank: sonal icic</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-5000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>9011747520</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>5000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>7620180459</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Mobile House[7620180459] | Ref: UPI/882164468692/10:38:24/UPI/dineshjoshi.joshi62 | Bank: sonal bob</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-3000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>7620180459</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>3000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>9844402897</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Anand Agencies Gadag[9844402897] | Ref: 840231761981 | Bank: sonal icic 22102026</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-5000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>9844402897</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>5000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>9844402897</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Anand Agencies Gadag[9844402897] | Ref: CAM/64991HRY/CASH DEP-Other/22-10-26/2309 | Bank: sonal icic 22102026</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-21000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>9844402897</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>21000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>9844402897</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Anand Agencies Gadag[9844402897] | Ref: 710158904966 | Bank: sonal icic 22102026</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-10000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>9844402897</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>10000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>9844402897</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Anand Agencies Gadag[9844402897] | Ref: 734437364481 | Bank: sonal icic 22102026</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-27000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>9844402897</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>27000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>9844402897</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Anand Agencies Gadag[9844402897] | Ref: 774949079718/795289361886/10k+5k | Bank: sonal icic 21102026</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-15000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>9844402897</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>15000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>9844402897</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Anand Agencies Gadag[9844402897] | Ref: 215899686366 | Bank: sonal icic</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-5000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>9844402897</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>5000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>9844402897</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Anand Agencies Gadag[9844402897] | Ref: 665968311713/555011845211/5k+5k | Bank: sonal icic 20102026</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-10000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>9844402897</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>10000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>9844402897</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Anand Agencies Gadag[9844402897] | Ref: 147670172749 | Bank: sonal icic 20102026</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-5000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>9844402897</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>5000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>9986877712</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Mahalingappa Ele[9986877712] | Ref: UPI/096404978362/Payment from Ph/XX1638@axl/UNIONB | Bank: sonal icic</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-1400.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>9986877712</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>1400.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>7083362568</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Smart Fix Hub[7083362568] | Ref: UPI/666287158931/10:49:09/UPI/ramhariuike2003@oka | Bank: sonal bob</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-5000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>7083362568</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>5000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>9511238915</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Nik`s Corner Porvorim[9511238915] | Ref: THIRD PARTY CASH DEP-BNA/CPRO18005/6916/231026/MAP | Bank: sonal v</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-42500.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>9511238915</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>42500.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>9970944696</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Dattkrupa Mobile Shop[9970944696] | Ref: UPI/702677747574/10:52:51/UPI/9970944696@ybl/Paym | Bank: sonal bob</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-5000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>9970944696</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>5000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+        <TALLYMESSAGE xmlns:UDF="TallyUDF">
+          <VOUCHER VCHTYPE="Journal" ACTION="Create" OBJVIEW="Accounting Voucher View">
+            <DATE>20261023</DATE>
+            <VOUCHERTYPENAME>Journal</VOUCHERTYPENAME>
+            <PARTYLEDGERNAME>8830387673</PARTYLEDGERNAME>
+            <NARRATION>Fund Transfered To Mahalaxmi Electronics[8830387673] | Ref: BY TRANSFER-IMPS/629611102216/INB-XX283-Avinash /F | Bank: SONAL SBI</NARRATION>
+            <EFFECTIVEDATE>20261023</EFFECTIVEDATE>
+            
+            <!-- Dr. API BALANCE -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>API BALANCE</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>Yes</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>No</ISPARTYLEDGER>
+              <AMOUNT>-10000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+
+            <!-- Cr. Customer Mobile Number Ledger -->
+            <ALLLEDGERENTRIES.LIST>
+              <LEDGERNAME>8830387673</LEDGERNAME>
+              <ISDEEMEDPOSITIVE>No</ISDEEMEDPOSITIVE>
+              <ISPARTYLEDGER>Yes</ISPARTYLEDGER>
+              <AMOUNT>10000.00</AMOUNT>
+            </ALLLEDGERENTRIES.LIST>
+          </VOUCHER>
+        </TALLYMESSAGE>
+      </REQUESTDATA>
+    </IMPORTDATA>
+  </BODY>
+</ENVELOPE>

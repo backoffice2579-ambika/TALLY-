@@ -1,0 +1,87 @@
+;; ==============================================================================
+;; AMBIKA MULTI SERVICES - LIVE PORTAL SYNC TDL
+;; Works on: Tally Prime / Tally.ERP 9 / Tally 7.2
+;; ==============================================================================
+
+;; 1. GATEWAY OF TALLY MENU INTEGRATION
+[#Menu: Gateway of Tally]
+    Add: Key Item: Before: @@locQuit: "Ambika Live Portal Sync" : L : Display: AmbikaPortalSyncReport
+
+;; 2. REPORT DEFINITION (Opens when Enter or 'L' is pressed)
+[Report: AmbikaPortalSyncReport]
+    Title       : "Ambika Live Portal Sync"
+    Form        : AmbikaPortalSyncForm
+
+[Form: AmbikaPortalSyncForm]
+    Parts       : AmbikaPortalSyncPart
+    Buttons     : AmbikaStartSyncBtn, AmbikaOpenFolderBtn
+    Key         : AmbikaStartSyncKey
+
+[Key: AmbikaStartSyncKey]
+    Key         : Enter
+    Action      : Call : AmbikaPortalSyncFunction
+
+[Part: AmbikaPortalSyncPart]
+    Lines       : AmbikaSyncLine1, AmbikaSyncLine2, AmbikaSyncLine3, AmbikaSyncLine4
+    Space Top   : 1
+    Space Left  : 2
+
+[Line: AmbikaSyncLine1]
+    Fields      : AmbikaSyncTitle
+
+[Field: AmbikaSyncTitle]
+    Use         : Name Field
+    Set as      : "AMBIKA MULTI SERVICES - LIVE PORTAL SYNC"
+    Style       : Large Bold
+    Color       : "Deep Azure"
+    Width       : 60
+
+[Line: AmbikaSyncLine2]
+    Fields      : AmbikaSyncDesc
+
+[Field: AmbikaSyncDesc]
+    Use         : Name Field
+    Set as      : "Download live transactions from portal & sync into Tally."
+    Style       : Normal
+    Width       : 60
+
+[Line: AmbikaSyncLine3]
+    Fields      : AmbikaSyncActionField
+
+[Field: AmbikaSyncActionField]
+    Use         : Name Field
+    Set as      : ">> Press [ENTER] to Sync Now | Press [Esc] to Exit <<"
+    Style       : Normal Bold
+    Color       : "Dark Green"
+    Width       : 60
+
+[Line: AmbikaSyncLine4]
+    Fields      : AmbikaSyncHelpField
+
+[Field: AmbikaSyncHelpField]
+    Use         : Name Field
+    Set as      : "Source: D:\tally tdl\PROJECT FILL\TALLY TDL\TDL\portal_sync.py"
+    Style       : Small Italic
+    Width       : 60
+
+[Button: AmbikaStartSyncBtn]
+    Title       : "Sync Now (Enter)"
+    Key         : Enter
+    Action      : Call : AmbikaPortalSyncFunction
+
+[Button: AmbikaOpenFolderBtn]
+    Title       : "Open Folder"
+    Key         : Alt + O
+    Action      : Exec : "explorer.exe" : "d:\\tally tdl\\PROJECT FILL\\TALLY TDL\\TDL"
+
+;; 3. SYNC EXECUTION FUNCTION
+[Function: AmbikaPortalSyncFunction]
+    00 : QUERY BOX : "Fetch latest transactions from Ambika Portal now?" : Yes : No
+    10 : If : NOT $$LastResult
+    20 :    Return
+    30 : End If
+    40 : START PROGRESS : 1 : "Ambika Live Sync" : @@CmpMailName : "Fetching portal data..."
+    50 : Exec : "cmd.exe" : "/c cd /d \"d:\\tally tdl\\PROJECT FILL\\TALLY TDL\\TDL\" && python portal_sync.py --once"
+    60 : END PROGRESS
+    70 : Msg Box : "Ambika Multi Services" : "Portal data fetched successfully!" + $$NewLine + "XML generated: tally_import.xml" + $$NewLine + $$NewLine + "Please check Day Book."
+    80 : Return

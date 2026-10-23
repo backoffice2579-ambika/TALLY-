@@ -1,0 +1,564 @@
+;; ==============================================================================
+;; TALLY PRIME / ERP 9: BANK SUSPENSE UTR AUTO-RECONCILIATION
+;; ==============================================================================
+;; Features:
+;; 1. Fast In-Memory Filtering & Date Scoping.
+;; 2. Exact 12-Digit UPI / IMPS UTR Matching & Amount Verification.
+;; 3. Interactive Enter Key: Match Found confirmation dialog [Yes / No].
+;; 4. Batch Reconciliation: (Alt + R) auto-reconciles all in one click.
+;; ==============================================================================
+
+;; ------------------------------------------------------------------------------
+;; 1. GATEWAY OF TALLY INTEGRATION
+;; ------------------------------------------------------------------------------
+[#Menu: Gateway of Tally]
+    Add : Key Item : Before : @@locQuit : "Suspense UTR Clearance" : U : Display : SuspenseUTRClearanceReport
+
+;; ------------------------------------------------------------------------------
+;; 2. REPORT DEFINITION
+;; ------------------------------------------------------------------------------
+[Report: SuspenseUTRClearanceReport]
+    Title       : "Bank Suspense UTR Clearance"
+    Form        : SuspenseUTRClearanceForm
+    Variable    : SVFromDate, SVToDate, TotalMatchedCount
+    Set         : SVFromDate : $$YearStart:##SVCurrentDate
+    Set         : SVToDate   : ##SVCurrentDate
+    Set         : TotalMatchedCount : $$GetTotalMatchedCount
+
+[Form: SuspenseUTRClearanceForm]
+    Parts       : SuspenseUTRTitlePart, SuspenseUTRHeaderPart, SuspenseUTRBodyPart
+    Bottom Parts: SuspenseUTRTotalPart
+    Buttons     : ChangePeriod, SuspenseReconcileAllBtn, SuspenseRefreshBtn
+
+;; ------------------------------------------------------------------------------
+;; 3. TITLE & HEADER PARTS
+;; ------------------------------------------------------------------------------
+[Part: SuspenseUTRTitlePart]
+    Lines       : SuspenseUTRTitleLine
+    Space Bottom: 0.5
+
+[Line: SuspenseUTRTitleLine]
+    Fields      : SuspenseReportTitleField, SuspensePeriodField
+
+[Field: SuspenseReportTitleField]
+    Use         : Name Field
+    Set as      : "BANK SUSPENSE RECEIPTS - UTR CLEARANCE"
+    Width       : 60% Page
+    Style       : Large Bold
+    Color       : "Deep Azure"
+
+[Field: SuspensePeriodField]
+    Use         : Name Field
+    Set as      : @@DSPCompanyPeriod
+    Width       : 40% Page
+    Align       : Right
+    Style       : Normal Bold
+
+[Part: SuspenseUTRHeaderPart]
+    Lines       : SuspenseUTRHeaderLine
+
+[Line: SuspenseUTRHeaderLine]
+    Fields      : SuspenseHdrDate, SuspenseHdrVchNo, SuspenseHdrNarration, SuspenseHdrAmount, SuspenseHdrCurrentLedger, SuspenseHdrStatus
+    Border      : Column Titles
+
+[Field: SuspenseHdrDate]
+    Set as      : "Date"
+    Width       : 12
+    Align       : Center
+    Style       : Normal Bold
+
+[Field: SuspenseHdrVchNo]
+    Set as      : "Receipt No"
+    Width       : 14
+    Align       : Left
+    Style       : Normal Bold
+
+[Field: SuspenseHdrNarration]
+    Set as      : "Bank Narration"
+    Width       : 48
+    Align       : Left
+    Style       : Normal Bold
+
+[Field: SuspenseHdrAmount]
+    Set as      : "Amount"
+    Width       : 16
+    Align       : Right
+    Style       : Normal Bold
+
+[Field: SuspenseHdrCurrentLedger]
+    Set as      : "Current Ledger"
+    Width       : 18
+    Align       : Left
+    Style       : Normal Bold
+
+[Field: SuspenseHdrStatus]
+    Set as      : "Match Status"
+    Width       : 24
+    Align       : Center
+    Style       : Normal Bold
+
+;; ------------------------------------------------------------------------------
+;; 4. BODY PART & REPEATING LINES
+;; ------------------------------------------------------------------------------
+[Part: SuspenseUTRBodyPart]
+    Lines       : SuspenseUTRDetailLine
+    Repeat      : SuspenseUTRDetailLine : SuspenseReceiptVouchersColl
+    Scroll      : Vertical
+    Total       : SuspenseColAmount
+
+[Line: SuspenseUTRDetailLine]
+    Fields      : SuspenseColDate, SuspenseColVchNo, SuspenseColNarration, SuspenseColAmount, SuspenseColCurrentLedger, SuspenseColStatus
+    Key         : SuspenseZoomVch
+    Border      : Thin Bottom
+
+[Field: SuspenseColDate]
+    Use         : Short Date Field
+    Set as      : $Date
+    Width       : 12
+    Align       : Center
+
+[Field: SuspenseColVchNo]
+    Use         : Name Field
+    Set as      : $VoucherNumber
+    Width       : 14
+    Align       : Left
+
+[Field: SuspenseColNarration]
+    Use         : Name Field
+    Set as      : $Narration
+    Width       : 48
+    Align       : Left
+
+[Field: SuspenseColAmount]
+    Use         : Amount Field
+    Set as      : $Amount
+    Width       : 16
+    Align       : Right
+
+[Field: SuspenseColCurrentLedger]
+    Use         : Name Field
+    Set as      : If NOT $$IsEmpty:$PartyLedgerName Then $PartyLedgerName Else "Suspense A/c"
+    Width       : 18
+    Align       : Left
+
+[Field: SuspenseColStatus]
+    Use         : Name Field
+    Set as      : $$GetRowStatusText:$Narration:$Amount
+    Width       : 24
+    Align       : Center
+    Color       : If ($$Upper:$$Value containing "MATCH") Then "Dark Green" Else "Red"
+    Style       : Normal Bold
+
+;; ------------------------------------------------------------------------------
+;; 5. BOTTOM SUMMARY & TOTALS
+;; ------------------------------------------------------------------------------
+[Part: SuspenseUTRTotalPart]
+    Lines       : SuspenseUTRTotalLine, SuspenseUTRSummaryLine
+
+[Line: SuspenseUTRTotalLine]
+    Fields      : SuspenseColDate, SuspenseColVchNo, SuspenseColNarration, SuspenseColAmount, SuspenseColCurrentLedger, SuspenseColStatus
+    Border      : Totals
+    Local : Field : SuspenseColDate          : Set as : "Total (" + $$String:$$NumItems:SuspenseReceiptVouchersColl + "):"
+    Local : Field : SuspenseColDate          : Style  : Normal Bold
+    Local : Field : SuspenseColVchNo         : Set as : ""
+    Local : Field : SuspenseColNarration     : Set as : ""
+    Local : Field : SuspenseColAmount        : Set as : $$Total:SuspenseColAmount
+    Local : Field : SuspenseColAmount        : Style  : Normal Bold
+    Local : Field : SuspenseColCurrentLedger : Set as : ""
+    Local : Field : SuspenseColStatus        : Set as : ""
+
+[Line: SuspenseUTRSummaryLine]
+    Fields      : SuspenseSummaryMatchedField, SuspenseSummaryUnmatchedField
+    Border      : Thin Top
+    Space Top   : 0.2
+
+[Field: SuspenseSummaryMatchedField]
+    Use         : Name Field
+    Set as      : "[✓] MATCHED (Ready to Clear): " + $$String:##TotalMatchedCount + " Voucher(s)"
+    Width       : 50% Page
+    Color       : "Dark Green"
+    Style       : Large Bold
+
+[Field: SuspenseSummaryUnmatchedField]
+    Use         : Name Field
+    Set as      : "[✗] NOT MATCHED: " + $$String:($$NumItems:SuspenseReceiptVouchersColl - ##TotalMatchedCount) + " Voucher(s)"
+    Width       : 50% Page
+    Align       : Right
+    Color       : "Red"
+    Style       : Large Bold
+
+;; ------------------------------------------------------------------------------
+;; 6. BUTTONS & SHORTCUT KEYS
+;; ------------------------------------------------------------------------------
+[Button: SuspenseReconcileAllBtn]
+    Title  : "Reconcile All (Alt+R)"
+    Key    : Alt + R
+    Action : Call : ReconcileAllMatchedSuspense
+
+[Button: SuspenseRefreshBtn]
+    Title  : "Refresh (F5)"
+    Key    : F5
+    Action : Display : SuspenseUTRClearanceReport
+
+[Key: SuspenseZoomVch]
+    Key    : Enter
+    Action : Call : InteractiveReconcileVoucher
+
+;; ------------------------------------------------------------------------------
+;; 7. DATA COLLECTIONS (FAST & DATE-SCOPED)
+;; ------------------------------------------------------------------------------
+[Collection: SuspenseReceiptVouchersColl]
+    Type        : Voucher
+    Child Of    : $$VchTypeReceipt
+    Belongs To  : Yes
+    Filter      : PeriodScopeFilter, FastSuspenseFilter
+    Fetch       : MasterID, Date, VoucherNumber, Narration, Amount, PartyLedgerName, AllLedgerEntries.LedgerName, LedgerEntries.LedgerName
+
+[Collection: PeriodJournalVouchersColl]
+    Type        : Voucher
+    Child Of    : $$VchTypeJournal
+    Belongs To  : Yes
+    Filter      : PeriodScopeFilter
+    Fetch       : MasterID, Date, VoucherNumber, Narration, Reference, Amount, TotalAmount, PartyLedgerName, LedgerEntries.Amount, LedgerEntries.LedgerName, AllLedgerEntries.Amount, AllLedgerEntries.LedgerName
+
+;; ------------------------------------------------------------------------------
+;; 8. SYSTEM FORMULAS
+;; ------------------------------------------------------------------------------
+[System: Formulae]
+    PeriodScopeFilter  : ($Date >= ##SVFromDate AND $Date <= ##SVToDate)
+    FastSuspenseFilter : ($$Upper:$PartyLedgerName containing "SUSPENSE" OR $$Upper:$AllLedgerEntries[1].LedgerName containing "SUSPENSE" OR $$Upper:$AllLedgerEntries[2].LedgerName containing "SUSPENSE" OR $$Upper:$LedgerEntries[1].LedgerName containing "SUSPENSE" OR $$Upper:$LedgerEntries[2].LedgerName containing "SUSPENSE")
+
+;; ------------------------------------------------------------------------------
+;; 9. PRECISION 12-DIGIT UTR EXTRACTOR
+;; ------------------------------------------------------------------------------
+[Function: ExtractUTRFromNarration]
+    Parameter   : pNarration : String
+    Returns     : String
+    Variable    : vNar       : String
+    Variable    : vPos       : Number
+    Variable    : vCand      : String
+    Variable    : vLen       : Number
+    Variable    : vIdx       : Number
+    
+    00 : Set : vNar : ##pNarration
+    05 : If : $$IsEmpty:##vNar
+    10 :    Return : ""
+    15 : End If
+    
+    ;; 1. Check for "UPI/"
+    20 : Set : vPos : $$Find:"UPI/":##vNar
+    25 : If : (##vPos > 0)
+    30 :    Set : vCand : $$StringPart:##vNar:(##vPos + 4):12
+    35 :    If : ($$StringLength:##vCand = 12 AND $$IsNumeric:##vCand)
+    40 :        Return : ##vCand
+    45 :    End If
+    46 :    ;; Try offset + 3 if 0-based
+    47 :    Set : vCand : $$StringPart:##vNar:(##vPos + 3):12
+    48 :    If : ($$StringLength:##vCand = 12 AND $$IsNumeric:##vCand)
+    49 :        Return : ##vCand
+    50 :    End If
+    51 : End If
+    
+    ;; 2. Check for "IMPS/"
+    55 : Set : vPos : $$Find:"IMPS/":##vNar
+    60 : If : (##vPos > 0)
+    65 :    Set : vCand : $$StringPart:##vNar:(##vPos + 5):12
+    70 :    If : ($$StringLength:##vCand = 12 AND $$IsNumeric:##vCand)
+    75 :        Return : ##vCand
+    80 :    End If
+    81 :    ;; Try offset + 4 if 0-based
+    82 :    Set : vCand : $$StringPart:##vNar:(##vPos + 4):12
+    83 :    If : ($$StringLength:##vCand = 12 AND $$IsNumeric:##vCand)
+    84 :        Return : ##vCand
+    85 :    End If
+    86 : End If
+    
+    ;; 3. Check for "/CR/"
+    90 : Set : vPos : $$Find:"/CR/":##vNar
+    95 : If : (##vPos > 0)
+    100:    Set : vCand : $$StringPart:##vNar:(##vPos + 4):12
+    105:    If : ($$StringLength:##vCand = 12 AND $$IsNumeric:##vCand)
+    110:        Return : ##vCand
+    115:    End If
+    116:    Set : vCand : $$StringPart:##vNar:(##vPos + 3):12
+    117:    If : ($$StringLength:##vCand = 12 AND $$IsNumeric:##vCand)
+    118:        Return : ##vCand
+    119:    End If
+    120: End If
+    
+    ;; 4. Check after first slash "/"
+    125: Set : vPos : $$Find:"/":##vNar
+    130: If : (##vPos > 0)
+    135:    Set : vCand : $$StringPart:##vNar:(##vPos + 1):12
+    140:    If : ($$StringLength:##vCand = 12 AND $$IsNumeric:##vCand)
+    145:        Return : ##vCand
+    150:    End If
+    151:    Set : vCand : $$StringPart:##vNar:##vPos:12
+    152:    If : ($$StringLength:##vCand = 12 AND $$IsNumeric:##vCand)
+    153:        Return : ##vCand
+    154:    End If
+    155: End If
+    
+    ;; 5. Scan string for any 12 continuous digits (Fallback)
+    160: Set : vLen : $$StringLength:##vNar
+    165: If : (##vLen >= 12)
+    170:    Set : vIdx : 1
+    175:    While : (##vIdx <= (##vLen - 11))
+    180:        Set : vCand : $$StringPart:##vNar:##vIdx:12
+    185:        If ($$StringLength:##vCand = 12 AND $$IsNumeric:##vCand)
+    190:            Return : ##vCand
+    195:        End If
+    200:        Set : vIdx : ##vIdx + 1
+    205:    End While
+    210: End If
+    
+    220: Return : ""
+
+;; ------------------------------------------------------------------------------
+;; 10. RETRIEVE MATCHED PARTY (MOBILE NUMBER) FROM JOURNAL VOUCHERS
+;; ------------------------------------------------------------------------------
+[System: Variables]
+    TotalMatchedCount : 0
+
+[Variable: TotalMatchedCount]
+    Type : Number
+
+[Function: GetTotalMatchedCount]
+    Returns  : Number
+    Variable : vCount : Number
+    Variable : vParty : String
+    
+    00 : Set : vCount : 0
+    10 : Walk Collection : SuspenseReceiptVouchersColl
+    20 :    Set : vParty : $$GetMatchedJournalParty:$Narration:$Amount
+    30 :    If : (NOT $$IsEmpty:##vParty)
+    40 :        Set : vCount : ##vCount + 1
+    50 :    End If
+    60 : End Walk
+    70 : Return : ##vCount
+
+[Function: GetRowStatusText]
+    Parameter   : pNar : String
+    Parameter   : pAmt : Amount
+    Returns     : String
+    Variable    : vParty : String
+
+    00 : Set : vParty : $$GetMatchedJournalParty:##pNar:##pAmt
+    10 : If : (NOT $$IsEmpty:##vParty)
+    20 :    Return : ("MATCH (" + ##vParty + ")")
+    30 : Else
+    40 :    Return : "No Match"
+    50 : End If
+
+[Function: GetMatchedJournalParty]
+    Parameter   : pBankNarration : String
+    Parameter   : pAmount        : Amount
+    Returns     : String
+    Variable    : vPartyName     : String
+    Variable    : vBankUTR       : String
+    Variable    : vJVUTR         : String
+    Variable    : vJVNarration   : String
+    Variable    : vJVAmount      : Amount
+    Variable    : vIsMatch       : Logical
+    Variable    : vPosL          : Number
+    Variable    : vPosR          : Number
+    
+    00 : Set : vPartyName : ""
+    
+    10 : If : ($$IsEmpty:##pBankNarration)
+    20 :    Return : ""
+    30 : End If
+    
+    ;; Extract 12-digit UTR from Bank Narration
+    35 : Set : vBankUTR : $$ExtractUTRFromNarration:##pBankNarration
+    36 : If : ($$IsEmpty:##vBankUTR)
+    37 :    Return : ""
+    38 : End If
+    
+    40 : Walk Collection : PeriodJournalVouchersColl
+    50 :    If : ($$StringLength:##vPartyName = 0)
+    
+    55 :        Set : vJVNarration : $Narration + " " + $Reference
+    60 :        Set : vIsMatch     : No
+    
+    ;; 1. Check UTR Match
+    65 :        If : (NOT $$IsEmpty:##vBankUTR AND $$Upper:##vJVNarration containing ##vBankUTR)
+    70 :            Set : vIsMatch : Yes
+    75 :        Else
+    80 :            Set : vJVUTR : $$ExtractUTRFromNarration:##vJVNarration
+    85 :            If : (NOT $$IsEmpty:##vJVUTR AND $$Upper:##pBankNarration containing ##vJVUTR)
+    90 :                Set : vIsMatch : Yes
+    95 :            End If
+    100:        End If
+    
+    ;; 2. Match Amount
+    105:        If : (##vIsMatch AND ##pAmount != 0)
+    110:            Set : vJVAmount : If (NOT $$IsEmpty:$LedgerEntries[1].Amount) Then $$Abs:$LedgerEntries[1].Amount Else (If NOT $$IsEmpty:$AllLedgerEntries[1].Amount Then $$Abs:$AllLedgerEntries[1].Amount Else (If (NOT $$IsEmpty:$TotalAmount AND $TotalAmount != 0) Then $$Abs:$TotalAmount Else $$Abs:$Amount))
+    115:            If : ($$Abs:##vJVAmount != $$Abs:##pAmount)
+    120:                If : (NOT $$IsEmpty:$LedgerEntries[2].Amount AND $$Abs:$LedgerEntries[2].Amount = $$Abs:##pAmount)
+    125:                    Set : vIsMatch : Yes
+    130:                Else
+    135:                    Set : vIsMatch : No
+    140:                End If
+    145:            End If
+    150:        End If
+    
+    ;; 3. If matched, get Customer Mobile Ledger Name
+    155:        If : ##vIsMatch
+    ;; Source A: $PartyLedgerName
+    160:            If : (NOT $$IsEmpty:$PartyLedgerName AND $PartyLedgerName != "API BALANCE" AND NOT ($$Upper:$PartyLedgerName containing "SUSPENSE"))
+    165:                Set : vPartyName : $PartyLedgerName
+    170:            End If
+    ;; Source B: LedgerEntries & AllLedgerEntries
+    175:            If : ($$IsEmpty:##vPartyName)
+    176:                Set : vPartyName : If (NOT $$IsEmpty:$AllLedgerEntries[2].LedgerName AND $AllLedgerEntries[2].LedgerName != "API BALANCE" AND NOT ($$Upper:$AllLedgerEntries[2].LedgerName containing "SUSPENSE")) Then $AllLedgerEntries[2].LedgerName Else (If (NOT $$IsEmpty:$AllLedgerEntries[1].LedgerName AND $AllLedgerEntries[1].LedgerName != "API BALANCE" AND NOT ($$Upper:$AllLedgerEntries[1].LedgerName containing "SUSPENSE")) Then $AllLedgerEntries[1].LedgerName Else (If (NOT $$IsEmpty:$LedgerEntries[1].LedgerName AND $LedgerEntries[1].LedgerName != "API BALANCE" AND NOT ($$Upper:$LedgerEntries[1].LedgerName containing "SUSPENSE")) Then $LedgerEntries[1].LedgerName Else $LedgerEntries[2].LedgerName))
+    185:            End If
+    ;; Source C: From Narration brackets [...] e.g. "Customer Name[9595066808]"
+    190:            If : ($$IsEmpty:##vPartyName AND $$Find:"[":##vJVNarration > 0 AND $$Find:"]":##vJVNarration > 0)
+    195:                Set : vPosL : $$Find:"[":##vJVNarration
+    200:                Set : vPosR : $$Find:"]":##vJVNarration
+    205:                If : (##vPosR > ##vPosL + 1)
+    210:                    Set : vPartyName : $$StringPart:##vJVNarration:##vPosL:(##vPosR - ##vPosL - 1)
+    215:                End If
+    220:            End If
+    226:            If : (NOT $$IsEmpty:##vPartyName)
+    227:                Return : ##vPartyName
+    228:            End If
+    229:        End If
+    230:    End If
+    235: End Walk
+    240: Return : ##vPartyName
+
+;; ------------------------------------------------------------------------------
+;; 11. INTERACTIVE CLEARANCE ON ENTER KEY (MATCH CONFIRMATION DIALOG)
+;; ------------------------------------------------------------------------------
+[Function: InteractiveReconcileVoucher]
+    Variable : vVchNo          : String
+    Variable : vMasterID       : String
+    Variable : vNarration      : String
+    Variable : vAmount         : Amount
+    Variable : vBankUTR        : String
+    Variable : vMatchedParty   : String
+    Variable : vMatchFound     : Logical
+    Variable : vConfirmMsg     : String
+    
+    00 : Set : vVchNo        : $VoucherNumber
+    05 : Set : vMasterID     : "MasterID:" + $$Trim:($$String:$MasterID)
+    10 : Set : vNarration    : $Narration
+    15 : Set : vAmount       : $Amount
+    
+    20 : Set : vBankUTR      : $$ExtractUTRFromNarration:##vNarration
+    25 : Set : vMatchedParty : $$GetMatchedJournalParty:##vNarration:##vAmount
+    
+    30 : If : (NOT $$IsEmpty:##vMatchedParty)
+    35 :    Set : vConfirmMsg : "Match Found!" + $$NewLine + "Bank UTR: " + ##vBankUTR + $$NewLine + "Customer Mobile: " + ##vMatchedParty + $$NewLine + "Amount: " + $$String:##vAmount + $$NewLine + $$NewLine + "Update this voucher now?"
+    40 :    QUERY BOX : ##vConfirmMsg : Yes : No
+    45 :    If : $$LastResult
+    50 :        NEW OBJECT : Voucher : ##vMasterID
+    55 :        If : ($$Upper:$PartyLedgerName containing "SUSPENSE")
+    60 :            SET VALUE : PartyLedgerName : ##vMatchedParty
+    65 :        End If
+    70 :        Set : vMatchFound : No
+    75 :        WALK COLLECTION : AllLedgerEntries
+    80 :            If : ($$Upper:$LedgerName containing "SUSPENSE")
+    85 :                SET VALUE : LedgerName : ##vMatchedParty
+    90 :                Set : vMatchFound : Yes
+    95 :            End If
+    100:        END WALK
+    105:        WALK COLLECTION : LedgerEntries
+    110:            If : ($$Upper:$LedgerName containing "SUSPENSE")
+    115:                SET VALUE : LedgerName : ##vMatchedParty
+    120:                Set : vMatchFound : Yes
+    125:            End If
+    130:        END WALK
+    135:        If : ##vMatchFound
+    140:            ACCEPT ALTER
+    145:            Msg Box : "Reconciled" : ("Receipt No: " + ##vVchNo + " successfully updated to Customer Mobile: " + ##vMatchedParty)
+    150:            Display : SuspenseUTRClearanceReport
+    155:        End If
+    160:    End If
+    165: Else
+    170:    QUERY BOX : ("No matching Journal Voucher found with UTR: " + ##vBankUTR + $$NewLine + "Amount: " + $$String:##vAmount + $$NewLine + $$NewLine + "Open voucher to view or edit manually?") : Yes : No
+    175:    If : $$LastResult
+    180:        Alter : Voucher : ##vMasterID
+    185:    End If
+    190: End If
+    200: Return
+
+;; ------------------------------------------------------------------------------
+;; 12. BATCH CLEARANCE (ALT + R - RECONCILE ALL)
+;; ------------------------------------------------------------------------------
+[Function: ReconcileAllMatchedSuspense]
+    Variable : TotalCount      : Number
+    Variable : SuccessCount    : Number
+    Variable : CurrentStep     : Number
+    Variable : VchMasterID     : String
+    Variable : BankNarration   : String
+    Variable : RecAmount       : Amount
+    Variable : MatchedParty    : String
+    Variable : MatchFoundInVch : Logical
+    
+    05 : Set : TotalCount   : $$NumItems:SuspenseReceiptVouchersColl
+    06 : Set : SuccessCount : 0
+    07 : Set : CurrentStep  : 0
+    
+    08 : If : ##TotalCount = 0
+    09 :    Msg Box : "Suspense Clearance" : "No uncleared Suspense receipt vouchers found."
+    10 :    Return
+    11 : End If
+    
+    12 : QUERY BOX : ("Found " + $$String:##TotalCount + " Suspense Receipt(s). Auto-reconcile all matched against Journal Vouchers now?") : Yes : No
+    13 : If : NOT $$LastResult
+    14 :    Return
+    15 : End If
+    
+    20 : START PROGRESS : ##TotalCount : "Suspense UTR Clearance" : @@CmpMailName : "Reconciling Bank Receipts with JVs..."
+    
+    25 : WALK COLLECTION : SuspenseReceiptVouchersColl
+    30 :    Set : CurrentStep   : ##CurrentStep + 1
+    35 :    SHOW PROGRESS : ##CurrentStep
+    
+    40 :    Set : BankNarration : $Narration
+    45 :    Set : RecAmount     : $Amount
+    46 :    Set : MatchedParty  : $$GetMatchedJournalParty:##BankNarration:##RecAmount
+    
+    50 :    If : (NOT $$IsEmpty:##MatchedParty)
+    55 :        Set : VchMasterID   : "MasterID:" + $$Trim:($$String:$MasterID)
+    60 :        Set : MatchFoundInVch : No
+    
+    65 :        NEW OBJECT : Voucher : ##VchMasterID
+    
+    70 :        If : ($$Upper:$PartyLedgerName containing "SUSPENSE")
+    75 :            SET VALUE : PartyLedgerName : ##MatchedParty
+    80 :        End If
+    
+    85 :        WALK COLLECTION : AllLedgerEntries
+    90 :            If : ($$Upper:$LedgerName containing "SUSPENSE")
+    95 :                SET VALUE : LedgerName : ##MatchedParty
+    100:                Set : MatchFoundInVch : Yes
+    105:            End If
+    110:        END WALK
+    115:        WALK COLLECTION : LedgerEntries
+    120:            If : ($$Upper:$LedgerName containing "SUSPENSE")
+    125:                SET VALUE : LedgerName : ##MatchedParty
+    130:                Set : MatchFoundInVch : Yes
+    135:            End If
+    140:        END WALK
+    
+    145:        If : ##MatchFoundInVch
+    150:            ACCEPT ALTER
+    155:            Set : SuccessCount : ##SuccessCount + 1
+    160:        End If
+    165:    End If
+    170: END WALK
+    
+    160: END PROGRESS
+    
+    170: If : ##SuccessCount > 0
+    175:    Msg Box : "Suspense Clearance Complete" : ($$String:##SuccessCount + " Suspense Receipt Voucher(s) successfully reconciled & updated to Customer Mobile!")
+    180: Else
+    185:    Msg Box : "Suspense Clearance" : "No vouchers were updated. Matching UTR or Amount not found in Journal vouchers."
+    190: End If
+    
+    200: Display : SuspenseUTRClearanceReport
+    210: Return
